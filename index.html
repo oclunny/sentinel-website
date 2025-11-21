@@ -5,15 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentinel WiFi Dashboard</title>
     <style>
-      body {
-        margin: 0;
-        background: radial-gradient(circle at center, #091224, #030712);
-        font-family: "Inter", sans-serif;
-        color: white;
-        overflow-x: hidden;
+      :root {
+        --bg-dark: radial-gradient(circle at center, #091224, #030712);
+        --bg-light: radial-gradient(circle at center, #f5f5f5, #e0e0e0);
+        --text-dark: white;
+        --text-light: #111;
+        --section-dark: rgba(255, 255, 255, 0.06);
+        --section-light: rgba(0, 0, 0, 0.06);
+        --border-dark: rgba(255, 255, 255, 0.1);
+        --border-light: rgba(0, 0, 0, 0.1);
+        --glow-dark: rgba(0, 110, 255, 0.25);
+        --glow-light: rgba(0, 110, 255, 0.15);
       }
 
-      /* Glow ring background */
+      body {
+        margin: 0;
+        background: var(--bg-dark);
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        overflow-x: hidden;
+        transition: background 0.3s, color 0.3s;
+        position: relative;
+      }
+
+      body.light {
+        background: var(--bg-light);
+        color: var(--text-light);
+      }
+
       .glow {
         position: fixed;
         top: 50%;
@@ -21,13 +40,14 @@
         width: 1200px;
         height: 1200px;
         transform: translate(-50%, -50%);
-        background: radial-gradient(
-          circle,
-          rgba(0, 110, 255, 0.25),
-          transparent 60%
-        );
+        background: radial-gradient(circle, var(--glow-dark), transparent 60%);
         filter: blur(120px);
         z-index: -2;
+        transition: background 0.3s;
+      }
+
+      body.light .glow {
+        background: radial-gradient(circle, var(--glow-light), transparent 60%);
       }
 
       header {
@@ -39,6 +59,7 @@
       header img {
         width: 180px;
         opacity: 0.95;
+        border-radius: 30%;
       }
 
       header h1 {
@@ -53,18 +74,23 @@
         margin-top: -10px;
       }
 
-      /* Glass sections */
       .section {
         width: 85%;
         max-width: 1100px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--section-dark);
+        border: 1px solid var(--border-dark);
         padding: 55px;
         margin: 50px auto;
         border-radius: 20px;
         backdrop-filter: blur(12px);
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
         animation: fadeIn 1.2s ease;
+        transition: background 0.3s, border 0.3s;
+      }
+
+      body.light .section {
+        background: var(--section-light);
+        border: 1px solid var(--border-light);
       }
 
       .section h2 {
@@ -109,14 +135,84 @@
         padding: 40px;
         opacity: 0.6;
         margin-top: 80px;
+        transition: color 0.3s;
+      }
+
+      .toggle-theme {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(90deg, #006eff, #0a84ff);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s, filter 0.3s;
+      }
+      .toggle-theme:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+      }
+
+      .theme-circle {
+        position: fixed;
+        border-radius: 50%;
+        background: white;
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        right: 20px;
+        z-index: 99;
+        pointer-events: none;
+        transform: scale(0);
+        transition: transform 0.6s ease-out, background 0.3s;
+      }
+
+      body.light .theme-circle {
+        background: #091224;
       }
     </style>
   </head>
   <body>
     <div class="glow"></div>
 
+    <button class="toggle-theme" onclick="toggleTheme()">
+      <svg
+        id="iconSun"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="white"
+        width="20"
+        height="20"
+        style="display: none"
+      >
+        <path
+          d="M12 4.354a7.646 7.646 0 100 15.292 7.646 7.646 0 000-15.292zm0 13.292a5.646 5.646 0 110-11.292 5.646 5.646 0 010 11.292zm0-15.646h1v3h-2v-3h1zm0 15h1v3h-2v-3h1zm9-7h3v2h-3v-2zm-15 0h3v2H6v-2zm12.071-5.071l2.121-2.121 1.414 1.414-2.121 2.121-1.414-1.414zm-12.142 12.142l2.121-2.121 1.414 1.414-2.121 2.121-1.414-1.414zm12.142 0l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zm-12.142-12.142l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121z"
+        />
+      </svg>
+
+      <svg
+        id="iconMoon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="white"
+        width="20"
+        height="20"
+      >
+        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+      </svg>
+    </button>
+
+    <div class="theme-circle" id="themeCircle"></div>
+
     <header>
-      <img src="/mnt/data/SENTINEL.png" alt="Sentinel Logo" />
+      <img src="static/SENTINEL.png" alt="Sentinel Logo" />
       <h1>SENTINEL WIFI DASHBOARD</h1>
       <p>Real‑time monitoring • Secure insights • Modern UI</p>
     </header>
@@ -128,7 +224,9 @@
         risks, open ports, real‑time traffic, and more. Designed with a clean
         modern interface that matches your brand perfectly.
       </p>
-      <a class="button" href="#">Download App</a>
+      <a class="button" href="static/SentinelSetup.exe" download
+        >Download App</a
+      >
     </div>
 
     <div class="section">
@@ -150,5 +248,40 @@
     </div>
 
     <footer>© 2025 Sentinel — All rights reserved.</footer>
+
+    <script>
+      const body = document.body;
+      const circle = document.getElementById("themeCircle");
+      const iconSun = document.getElementById("iconSun");
+      const iconMoon = document.getElementById("iconMoon");
+
+      function toggleTheme() {
+        const rect = document
+          .querySelector(".toggle-theme")
+          .getBoundingClientRect();
+        circle.style.top = rect.top + "px";
+        circle.style.left = rect.left + "px";
+        circle.style.transform = "scale(0)";
+        circle.style.transition = "none";
+
+        requestAnimationFrame(() => {
+          circle.style.transition = "transform 0.6s ease-out, background 0.3s";
+          const maxDim = Math.max(window.innerWidth, window.innerHeight) * 2;
+          circle.style.transform = `scale(${maxDim / 40})`;
+        });
+
+        setTimeout(() => {
+          body.classList.toggle("light");
+          if (body.classList.contains("light")) {
+            iconSun.style.display = "block";
+            iconMoon.style.display = "none";
+          } else {
+            iconSun.style.display = "none";
+            iconMoon.style.display = "block";
+          }
+          circle.style.transform = "scale(0)";
+        }, 300);
+      }
+    </script>
   </body>
 </html>
