@@ -190,3 +190,18 @@ img.dashboard-img {
     padding: 25px 15px;
   }
 }
+
+.clunny-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+body.light .clunny-footer {
+  color: #000;
+}
+
+body.dark .clunny-footer {
+  color: #fff;
+}
