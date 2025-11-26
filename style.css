@@ -84,6 +84,65 @@ header p {
   transition: all 0.3s ease;
 }
 
+.alt-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  margin-top: 80px;
+}
+
+.alt-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.alt-item.reverse {
+  flex-direction: row-reverse !important;
+}
+
+.alt-img {
+  width: 48%;
+  max-width: 650px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.alt-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.15);
+  transition: transform 0.35s ease;
+}
+
+.alt-img:hover img {
+  transform: scale(1.38);
+}
+
+.alt-text {
+  width: 42%;
+  max-width: 550px;
+}
+
+.alt-text h3 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.alt-text p {
+  line-height: 1.55;
+  opacity: 0.85;
+  font-size: 1.15rem;
+}
+
 body.light .section {
   background: var(--section-bg-light);
   border: 1px solid var(--section-border-light);

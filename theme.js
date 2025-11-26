@@ -3,7 +3,6 @@ const circle = document.getElementById("themeCircle");
 const iconSun = document.getElementById("iconSun");
 const iconMoon = document.getElementById("iconMoon");
 
-// Load saved theme on page load
 window.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("sentinel-theme");
   if (savedTheme === "light") {
