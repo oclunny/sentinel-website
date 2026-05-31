@@ -1,171 +1,366 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sentinel Dashboard</title>
-    <link rel="icon" type="image/png" href="/SENTINEL(RC).png" />
-    <link rel="stylesheet" href="style.css" />
+    <title>Sentinel Download</title>
+    <link rel="icon" type="image/png" href="static/SENTINELWD (RC).png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sentinel.css" />
   </head>
   <body>
-    <div class="glow"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
 
-    <button class="toggle-theme" onclick="toggleTheme()">
-      <svg
-        id="iconSun"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="white"
-        viewBox="0 0 24 24"
-        width="20"
-        height="20"
-        style="display: none"
-      >
-        <path
-          d="M12 4.354a7.646 7.646 0 100 15.292 7.646 7.646 0 000-15.292zm0 13.292a5.646 5.646 0 110-11.292 5.646 5.646 0 010 11.292zm0-15.646h1v3h-2v-3h1zm0 15h1v3h-2v-3h1zm9-7h3v2h-3v-2zm-15 0h3v2H6v-2zm12.071-5.071l2.121-2.121 1.414 1.414-2.121 2.121-1.414-1.414zm-12.142 12.142l2.121-2.121 1.414 1.414-2.121 2.121-1.414-1.414zm12.142 0l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zm-12.142-12.142l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121z"
-        />
-      </svg>
-      <svg
-        id="iconMoon"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="white"
-        viewBox="0 0 24 24"
-        width="20"
-        height="20"
-      >
-        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-      </svg>
-    </button>
-    <div class="theme-circle" id="themeCircle"></div>
-
-    <header>
-      <img src="static/SENTINELWD (RC).png" alt="Sentinel Logo" />
-      <h1>Sentinel Dashboard</h1>
-      <p>
-        Monitor your WiFi network in real-time with a modern, secure interface.
-      </p>
-      <div class="button-container">
-        <a class="button" href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe" download
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="static/SENTINELWD (RC).png" alt="Sentinel" />
+          <span>SENTINEL</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+          <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+            <svg
+              id="iconSun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="currentColor"
+              style="display: none"
+            >
+              <path
+                d="M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zM4.22 5.64a1 1 0 0 1 1.42-1.42l.7.71a1 1 0 0 1-1.41 1.41l-.71-.7zm13.44 12.72a1 1 0 0 1 1.41-1.41l.71.7a1 1 0 1 1-1.41 1.42l-.71-.71zM2 12a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1zM4.22 18.36l.71-.7a1 1 0 1 1 1.41 1.41l-.7.71a1 1 0 0 1-1.42-1.42zm13.44-12.72l.71-.71a1 1 0 1 1 1.41 1.42l-.7.7a1 1 0 0 1-1.42-1.41z"
+              />
+            </svg>
+            <svg
+              id="iconMoon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="currentColor"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+            </svg>
+          </button>
+          <a
+            href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
+            class="btn-primary nav-cta"
+            download
+            >Download</a
+          >
+        </div>
+        <button class="burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="dashboard.html" class="mobile-link">Dashboard</a>
+        <a
+          href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
+          class="btn-primary mobile-cta"
+          download
           >Download App</a
         >
       </div>
-      <div class="button-container">
-        <a class="button" href="index.html">Back to Home</a>
-      </div>
-    </header>
+    </nav>
 
-    <div class="alt-item">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Dashboard.png" alt="" />
-      </div>
-      <div class="alt-text">
-        <h3>Dashboard Overview</h3>
-        <p>
-          Get a real-time overview of your entire network. Monitor device
-          activity, traffic trends, and security status at a glance.
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-label">Dashboard</div>
+        <h1 class="page-title">Your Network,<br /><em>Under Control</em></h1>
+        <p class="page-desc">
+          Every screen of the Sentinel app, explained. Monitor, secure, and
+          manage your WiFi network with a beautifully designed interface.
         </p>
+        <a
+          href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
+          class="btn-primary btn-lg"
+          download
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Download for Windows
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="alt-item reverse">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Networks.png" alt="" />
-      </div>
-      <div class="alt-text">
-        <h3>Networks Panel</h3>
-        <p>
-          View all available and connected networks. Quickly see connection
-          strength, IP details, and network type for each device.
-        </p>
-      </div>
-    </div>
+    <!-- Feature Showcase -->
+    <section class="showcase">
+      <div class="container">
+        <div class="showcase-item">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Dashboard.png"
+                alt="Dashboard Overview"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">01</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Overview</div>
+            <h2>Dashboard</h2>
+            <p>
+              Get a real-time overview of your entire network. Monitor device
+              activity, traffic trends, and security status at a glance. See
+              active devices, open ports, and overall risk level the moment you
+              log in.
+            </p>
+            <ul class="feature-list">
+              <li>Active device count</li>
+              <li>Open port monitoring</li>
+              <li>Network risk indicator</li>
+              <li>Device hostname table</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="alt-item">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Security.png" alt="" />
-      </div>
-      <div class="alt-text">
-        <h3>Security Overview</h3>
-        <p>
-          Stay protected with instant alerts and vulnerability reports. Manage
-          firewalls, monitor suspicious activity, and keep your network safe.
-        </p>
-      </div>
-    </div>
+        <div class="showcase-item reverse">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Networks.png"
+                alt="Networks Panel"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">02</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Connectivity</div>
+            <h2>Networks Panel</h2>
+            <p>
+              View all available and connected networks. Quickly see connection
+              strength, IP details, and network type for each device on your
+              local network.
+            </p>
+            <ul class="feature-list">
+              <li>Signal strength display</li>
+              <li>IP address details</li>
+              <li>Network type classification</li>
+              <li>Quick connect overview</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="alt-item reverse">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Settings.png" alt="" />
-      </div>
-      <div class="alt-text">
-        <h3>App Settings</h3>
-        <p>
-          Customize your app experience. Configure notifications, themes,
-          privacy options, and advanced network preferences.
-        </p>
-      </div>
-    </div>
+        <div class="showcase-item">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Security.png"
+                alt="Security Overview"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">03</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Protection</div>
+            <h2>Security Overview</h2>
+            <p>
+              Stay protected with instant alerts and vulnerability reports.
+              Manage firewalls, monitor suspicious activity, and keep your
+              network safe with a comprehensive threat monitor.
+            </p>
+            <ul class="feature-list">
+              <li>Threat level score</li>
+              <li>Unauthorized access alerts</li>
+              <li>Outdated firmware warnings</li>
+              <li>Blocked threat log</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="alt-item">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Login.png" alt="" />
-      </div>
-      <div class="alt-text">
-        <h3>Login</h3>
-        <p>
-          Securely access your Sentinel account. Enter your credentials to
-          unlock full network monitoring and control features.
-        </p>
-      </div>
-    </div>
+        <div class="showcase-item reverse">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Settings.png"
+                alt="App Settings"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">04</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Preferences</div>
+            <h2>App Settings</h2>
+            <p>
+              Customize your app experience. Configure notifications, themes,
+              privacy options, and advanced network preferences. Enable 2FA and
+              update your password from one unified settings panel.
+            </p>
+            <ul class="feature-list">
+              <li>Notification controls</li>
+              <li>Two-factor authentication</li>
+              <li>Dark / Light theme toggle</li>
+              <li>Scan frequency settings</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="alt-item reverse">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Register.png" alt="" />
+        <div class="showcase-item">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Login.png"
+                alt="Login Screen"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">05</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Access</div>
+            <h2>Login</h2>
+            <p>
+              Securely access your Sentinel account. Enter your credentials to
+              unlock full network monitoring and control features. Clean,
+              focused sign-in that gets you to your dashboard fast.
+            </p>
+            <ul class="feature-list">
+              <li>Secure credential entry</li>
+              <li>Session management</li>
+              <li>Quick register access</li>
+              <li>Help button always visible</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="showcase-item reverse">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Register.png"
+                alt="Register Screen"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">06</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Onboarding</div>
+            <h2>Register</h2>
+            <p>
+              Create a new Sentinel account to start monitoring your network.
+              Quick, secure, and easy to set up — just your name, email, and a
+              password to get started.
+            </p>
+            <ul class="feature-list">
+              <li>Simple account creation</li>
+              <li>Email verification</li>
+              <li>Instant dashboard access</li>
+              <li>Secure password setup</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="showcase-item">
+          <div class="showcase-img">
+            <div class="img-frame">
+              <img
+                src="static/SentinelAppSS/Help.png"
+                alt="Help Screen"
+                loading="lazy"
+              />
+            </div>
+            <div class="showcase-num">07</div>
+          </div>
+          <div class="showcase-text">
+            <div class="section-label">Support</div>
+            <h2>Help & Support</h2>
+            <p>
+              Access guides, troubleshooting tips, and FAQs. Report an issue
+              directly from the app with your email and a description — the
+              support team is always a tap away.
+            </p>
+            <ul class="feature-list">
+              <li>In-app issue reporting</li>
+              <li>Direct email support</li>
+              <li>FAQ access</li>
+              <li>Troubleshooting guides</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="alt-text">
-        <h3>Register</h3>
-        <p>
-          Create a new Sentinel account to start monitoring your network. Quick,
-          secure, and easy to set up.
-        </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-glow"></div>
+          <h2>Ready to secure your network?</h2>
+          <p>
+            Download the Sentinel app and take control of your WiFi security in
+            minutes.
+          </p>
+          <div class="cta-actions">
+            <a
+              href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
+              class="btn-primary btn-lg"
+              download
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download for Windows
+            </a>
+            <a href="index.html" class="btn-ghost btn-lg">Back to Home</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="alt-item">
-      <div class="alt-img">
-        <img src="static/SentinelAppSS/Login.png" alt="" />
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <img src="static/SENTINEL(RC).png" alt="Sentinel" />
+            <span>SENTINEL</span>
+          </div>
+          <p class="footer-copy">Created with ❤️ by <strong>clunny</strong></p>
+        </div>
       </div>
-      <div class="alt-text">
-        <h3>Help</h3>
-        <p>
-          Access guides, troubleshooting tips, and FAQs. Find answers to common
-          questions or contact support for assistance.
-        </p>
-      </div>
-    </div>
+    </footer>
 
-    <div class="section">
-      <h2>Features Explained</h2>
-      <p>
-        <strong>Device List:</strong> See all devices connected to your network.
-      </p>
-      <p>
-        <strong>Traffic Analysis:</strong> Monitor bandwidth usage in real-time.
-      </p>
-      <p>
-        <strong>Security Alerts:</strong> Get notified of risks and
-        vulnerabilities.
-      </p>
-    </div>
-
-    <div class="button-container">
-      <a class="button" href="index.html">Back to Home</a>
-    </div>
-
-    <div class="clunny-footer">
-      <p>Created with ❤️ by <strong>clunny</strong></p>
-    </div>
-
-    <script src="theme.js"></script>
+    <script src="sentinel.js"></script>
   </body>
 </html>
