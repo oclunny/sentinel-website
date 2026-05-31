@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentinel Download</title>
-    <link rel="icon" type="image/png" href="static/SENTINELWD (RC).png" />
+    <link rel="icon" type="image/png" href="static/SENTINEL(RC).png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,10 +26,53 @@
           <span>SENTINEL</span>
         </a>
         <div class="nav-links">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="dashboard.html" class="nav-link active">Dashboard</a>
+          <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+          <a
+            href="dashboard.html"
+            class="nav-link active"
+            data-i18n="nav.dashboard"
+            >Dashboard</a
+          >
         </div>
         <div class="nav-actions">
+          <div class="lang-switcher" id="langSwitcher">
+            <button class="lang-btn" id="langBtn" aria-label="Language">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                />
+              </svg>
+              <span id="langCurrent">EN</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="en">
+                🇬🇧 English
+              </button>
+              <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+              <button class="lang-option" data-lang="pt">🇵🇹 Português</button>
+            </div>
+          </div>
           <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
             <svg
               id="iconSun"
@@ -58,6 +101,7 @@
           <a
             href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
             class="btn-primary nav-cta"
+            data-i18n="nav.download"
             download
             >Download</a
           >
@@ -67,23 +111,32 @@
         </button>
       </div>
       <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-link">Home</a>
-        <a href="dashboard.html" class="mobile-link">Dashboard</a>
+        <a href="index.html" class="mobile-link" data-i18n="nav.home">Home</a>
+        <a href="dashboard.html" class="mobile-link" data-i18n="nav.dashboard"
+          >Dashboard</a
+        >
+        <div class="mobile-lang">
+          <button class="lang-option-mobile" data-lang="en">🇬🇧 EN</button>
+          <button class="lang-option-mobile" data-lang="es">🇪🇸 ES</button>
+          <button class="lang-option-mobile" data-lang="pt">🇵🇹 PT</button>
+        </div>
         <a
           href="https://github.com/oclunny/sentinel-website/releases/download/Sentinel/Sentinel.Wifi.Dashboard.Setup.1.0.0.exe"
           class="btn-primary mobile-cta"
+          data-i18n="nav.downloadFull"
           download
           >Download App</a
         >
       </div>
     </nav>
 
-    <!-- Page Hero -->
     <section class="page-hero">
       <div class="container">
-        <div class="section-label">Dashboard</div>
-        <h1 class="page-title">Your Network,<br /><em>Under Control</em></h1>
-        <p class="page-desc">
+        <div class="section-label" data-i18n="dash.label">Dashboard</div>
+        <h1 class="page-title" data-i18n="dash.title">
+          Your Network,<br /><em>Under Control</em>
+        </h1>
+        <p class="page-desc" data-i18n="dash.desc">
           Every screen of the Sentinel app, explained. Monitor, secure, and
           manage your WiFi network with a beautifully designed interface.
         </p>
@@ -105,12 +158,11 @@
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          Download for Windows
+          <span data-i18n="nav.downloadFull">Download for Windows</span>
         </a>
       </div>
     </section>
 
-    <!-- Feature Showcase -->
     <section class="showcase">
       <div class="container">
         <div class="showcase-item">
@@ -118,26 +170,26 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Dashboard.png"
-                alt="Dashboard Overview"
+                alt="Dashboard"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">01</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Overview</div>
-            <h2>Dashboard</h2>
-            <p>
+            <div class="section-label" data-i18n="s1.label">Overview</div>
+            <h2 data-i18n="s1.title">Dashboard</h2>
+            <p data-i18n="s1.desc">
               Get a real-time overview of your entire network. Monitor device
               activity, traffic trends, and security status at a glance. See
               active devices, open ports, and overall risk level the moment you
               log in.
             </p>
             <ul class="feature-list">
-              <li>Active device count</li>
-              <li>Open port monitoring</li>
-              <li>Network risk indicator</li>
-              <li>Device hostname table</li>
+              <li data-i18n="s1.f1">Active device count</li>
+              <li data-i18n="s1.f2">Open port monitoring</li>
+              <li data-i18n="s1.f3">Network risk indicator</li>
+              <li data-i18n="s1.f4">Device hostname table</li>
             </ul>
           </div>
         </div>
@@ -147,25 +199,25 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Networks.png"
-                alt="Networks Panel"
+                alt="Networks"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">02</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Connectivity</div>
-            <h2>Networks Panel</h2>
-            <p>
+            <div class="section-label" data-i18n="s2.label">Connectivity</div>
+            <h2 data-i18n="s2.title">Networks Panel</h2>
+            <p data-i18n="s2.desc">
               View all available and connected networks. Quickly see connection
               strength, IP details, and network type for each device on your
               local network.
             </p>
             <ul class="feature-list">
-              <li>Signal strength display</li>
-              <li>IP address details</li>
-              <li>Network type classification</li>
-              <li>Quick connect overview</li>
+              <li data-i18n="s2.f1">Signal strength display</li>
+              <li data-i18n="s2.f2">IP address details</li>
+              <li data-i18n="s2.f3">Network type classification</li>
+              <li data-i18n="s2.f4">Quick connect overview</li>
             </ul>
           </div>
         </div>
@@ -175,25 +227,25 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Security.png"
-                alt="Security Overview"
+                alt="Security"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">03</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Protection</div>
-            <h2>Security Overview</h2>
-            <p>
+            <div class="section-label" data-i18n="s3.label">Protection</div>
+            <h2 data-i18n="s3.title">Security Overview</h2>
+            <p data-i18n="s3.desc">
               Stay protected with instant alerts and vulnerability reports.
               Manage firewalls, monitor suspicious activity, and keep your
               network safe with a comprehensive threat monitor.
             </p>
             <ul class="feature-list">
-              <li>Threat level score</li>
-              <li>Unauthorized access alerts</li>
-              <li>Outdated firmware warnings</li>
-              <li>Blocked threat log</li>
+              <li data-i18n="s3.f1">Threat level score</li>
+              <li data-i18n="s3.f2">Unauthorized access alerts</li>
+              <li data-i18n="s3.f3">Outdated firmware warnings</li>
+              <li data-i18n="s3.f4">Blocked threat log</li>
             </ul>
           </div>
         </div>
@@ -203,25 +255,25 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Settings.png"
-                alt="App Settings"
+                alt="Settings"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">04</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Preferences</div>
-            <h2>App Settings</h2>
-            <p>
+            <div class="section-label" data-i18n="s4.label">Preferences</div>
+            <h2 data-i18n="s4.title">App Settings</h2>
+            <p data-i18n="s4.desc">
               Customize your app experience. Configure notifications, themes,
               privacy options, and advanced network preferences. Enable 2FA and
               update your password from one unified settings panel.
             </p>
             <ul class="feature-list">
-              <li>Notification controls</li>
-              <li>Two-factor authentication</li>
-              <li>Dark / Light theme toggle</li>
-              <li>Scan frequency settings</li>
+              <li data-i18n="s4.f1">Notification controls</li>
+              <li data-i18n="s4.f2">Two-factor authentication</li>
+              <li data-i18n="s4.f3">Dark / Light theme toggle</li>
+              <li data-i18n="s4.f4">Scan frequency settings</li>
             </ul>
           </div>
         </div>
@@ -231,25 +283,25 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Login.png"
-                alt="Login Screen"
+                alt="Login"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">05</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Access</div>
-            <h2>Login</h2>
-            <p>
+            <div class="section-label" data-i18n="s5.label">Access</div>
+            <h2 data-i18n="s5.title">Login</h2>
+            <p data-i18n="s5.desc">
               Securely access your Sentinel account. Enter your credentials to
               unlock full network monitoring and control features. Clean,
               focused sign-in that gets you to your dashboard fast.
             </p>
             <ul class="feature-list">
-              <li>Secure credential entry</li>
-              <li>Session management</li>
-              <li>Quick register access</li>
-              <li>Help button always visible</li>
+              <li data-i18n="s5.f1">Secure credential entry</li>
+              <li data-i18n="s5.f2">Session management</li>
+              <li data-i18n="s5.f3">Quick register access</li>
+              <li data-i18n="s5.f4">Help button always visible</li>
             </ul>
           </div>
         </div>
@@ -259,25 +311,25 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Register.png"
-                alt="Register Screen"
+                alt="Register"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">06</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Onboarding</div>
-            <h2>Register</h2>
-            <p>
+            <div class="section-label" data-i18n="s6.label">Onboarding</div>
+            <h2 data-i18n="s6.title">Register</h2>
+            <p data-i18n="s6.desc">
               Create a new Sentinel account to start monitoring your network.
               Quick, secure, and easy to set up — just your name, email, and a
               password to get started.
             </p>
             <ul class="feature-list">
-              <li>Simple account creation</li>
-              <li>Email verification</li>
-              <li>Instant dashboard access</li>
-              <li>Secure password setup</li>
+              <li data-i18n="s6.f1">Simple account creation</li>
+              <li data-i18n="s6.f2">Email verification</li>
+              <li data-i18n="s6.f3">Instant dashboard access</li>
+              <li data-i18n="s6.f4">Secure password setup</li>
             </ul>
           </div>
         </div>
@@ -287,38 +339,37 @@
             <div class="img-frame">
               <img
                 src="static/SentinelAppSS/Help.png"
-                alt="Help Screen"
+                alt="Help"
                 loading="lazy"
               />
             </div>
             <div class="showcase-num">07</div>
           </div>
           <div class="showcase-text">
-            <div class="section-label">Support</div>
-            <h2>Help & Support</h2>
-            <p>
+            <div class="section-label" data-i18n="s7.label">Support</div>
+            <h2 data-i18n="s7.title">Help & Support</h2>
+            <p data-i18n="s7.desc">
               Access guides, troubleshooting tips, and FAQs. Report an issue
               directly from the app with your email and a description — the
               support team is always a tap away.
             </p>
             <ul class="feature-list">
-              <li>In-app issue reporting</li>
-              <li>Direct email support</li>
-              <li>FAQ access</li>
-              <li>Troubleshooting guides</li>
+              <li data-i18n="s7.f1">In-app issue reporting</li>
+              <li data-i18n="s7.f2">Direct email support</li>
+              <li data-i18n="s7.f3">FAQ access</li>
+              <li data-i18n="s7.f4">Troubleshooting guides</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
       <div class="container">
         <div class="cta-card">
           <div class="cta-glow"></div>
-          <h2>Ready to secure your network?</h2>
-          <p>
+          <h2 data-i18n="cta.title">Ready to secure your network?</h2>
+          <p data-i18n="cta.desc">
             Download the Sentinel app and take control of your WiFi security in
             minutes.
           </p>
@@ -341,9 +392,11 @@
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
-              Download for Windows
+              <span data-i18n="nav.downloadFull">Download for Windows</span>
             </a>
-            <a href="index.html" class="btn-ghost btn-lg">Back to Home</a>
+            <a href="index.html" class="btn-ghost btn-lg" data-i18n="cta.back"
+              >Back to Home</a
+            >
           </div>
         </div>
       </div>
@@ -356,7 +409,9 @@
             <img src="static/SENTINEL(RC).png" alt="Sentinel" />
             <span>SENTINEL</span>
           </div>
-          <p class="footer-copy">Created with ❤️ by <strong>clunny</strong></p>
+          <p class="footer-copy" data-i18n="footer.copy">
+            Created with ❤️ by <strong>clunny</strong>
+          </p>
         </div>
       </div>
     </footer>
